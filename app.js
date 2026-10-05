@@ -194,10 +194,22 @@ document.addEventListener('DOMContentLoaded', () => {
     tjFace.addEventListener('click', async () => {
         if (isConnected) return; // Do nothing if already connected
 
-        log(`Attempting to connect to ${WS_URL}...`, 'info');
-        connectPrompt.textContent = 'Connecting...';
-
         try {
+            connectPrompt.textContent = 'Requesting Mic...';
+            // CRITICAL FOR MOBILE: Must initialize AudioContext and request Mic inside the direct click handler!
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
+            }
+            if (audioContext.state === 'suspended') {
+                await audioContext.resume();
+            }
+            if (!mediaStream) {
+                mediaStream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
+            }
+
+            log(`Attempting to connect to ${WS_URL}...`, 'info');
+            connectPrompt.textContent = 'Connecting...';
+            
             ws = new WebSocket(WS_URL);
             ws.binaryType = "arraybuffer";
 
