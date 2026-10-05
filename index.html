@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#080c14">
+    <link rel="manifest" href="manifest.json">
+    <title>TJ AI Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Main Face UI -->
+        <main class="tj-face-container">
+            <div class="tj-face disconnected" id="tjFace">
+                <div class="eyes">
+                    <div class="eye-container"><div class="eye left-eye"></div></div>
+                    <div class="eye-container"><div class="eye right-eye"></div></div>
+                </div>
+                <div class="mouth" id="mouth"></div>
+            </div>
+            
+            <div class="connect-prompt" id="connectPrompt">Click TJ to Connect</div>
+
+            <!-- Controls (Replaces the Connected pill) -->
+            <div class="controls" id="controlsBottom">
+                <button id="talkBtn" class="btn-icon secondary active-mic" title="Mute/Unmute Mic">
+                    <!-- Unmuted Mic Icon by default -->
+                    <svg id="micIcon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                      <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                      <line x1="12" y1="19" x2="12" y2="23"></line>
+                      <line x1="8" y1="23" x2="16" y2="23"></line>
+                    </svg>
+                </button>
+                <button id="disconnectBtn" class="btn-icon danger" title="Disconnect">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                      <line x1="12" y1="2" x2="12" y2="12"></line>
+                    </svg>
+                </button>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
