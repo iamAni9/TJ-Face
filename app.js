@@ -8,11 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mouth = document.getElementById('mouth');
 
     // Configuration
-    const VPS_IP = '195.35.20.203'; // <-- Change this to your VPS IP
-    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const VPS_DOMAIN = 'tj.convoply.online'; // <-- Your new secure domain
+    // const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
     // Automatically switch between local testing and production VPS
-    const WS_URL = isLocal ? 'ws://localhost:8765' : `ws://${VPS_IP}:8765`;
+    const WS_URL = `wss://${VPS_DOMAIN}`;
+    // const WS_URL = isLocal ? 'ws://localhost:8765' : `wss://${VPS_DOMAIN}`;
 
     let isConnected = false;
     let isListening = false;
